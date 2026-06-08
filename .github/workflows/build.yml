@@ -17,21 +17,18 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
 
-    # الأداة الرسمية لتهيئة وتثبيت نسخة Gradle المتوافقة أوتوماتيكياً
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
     - name: Build Android App
       run: |
-        # إنشاء ملفات تشغيل الـ wrapper المتوافقة مع أندرويد 8.2
         gradle wrapper --gradle-version 8.2
         chmod +x gradlew
-        
-        # تشغيل أمر البناء النهائي وتخطي الاختبارات لسرعة التنفيذ
         ./gradlew assembleDebug -x test --stacktrace
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
         name: IPTVPlayer
-        path: "**/build/outputs/apk/debug/app-debug.apk"
+        # هذا السطر يبحث في كل المجلدات الفرعية ويجلب أي ملف ينتهي بـ .apk تم إنتاجه
+        path: "**/build/outputs/apk/**/*.apk"
