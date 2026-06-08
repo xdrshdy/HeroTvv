@@ -30,4 +30,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: IPTVPlayer
-        path: "**/build/outputs/apk/debug/*.apk"
+        # تحديد المسار الداخلي المباشر للـ APK لضمان عثور السيرفر عليه فوراً
+        path: "app/build/outputs/apk/debug/app-debug.apk"
