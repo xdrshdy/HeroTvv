@@ -30,5 +30,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: IPTVPlayer
-        # هذا السطر يبحث بشكل شامل داخل المجلدات عن أي ملف APK تم بناؤه ليرفعه فوراً
-        path: "**/build/outputs/**/*.apk"
+        path: "**/build/outputs/apk/debug/*.apk"
